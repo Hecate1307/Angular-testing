@@ -1,0 +1,33 @@
+<h2>Testing a simple calculator</h2>
+<div class="container">
+    <form #f="ngForm">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Number1</mat-label>
+            <input matInput ngModel name="number1" #number1 required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Number2</mat-label>
+            <input matInput ngModel name="number2" #number2 required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Select Operator</mat-label>
+            <mat-select ngModel name="operator" #operator required>
+                <mat-option value="+">+</mat-option>
+                <mat-option value="-">-</mat-option>
+                <mat-option value="*">*</mat-option>
+                <mat-option value="/">/</mat-option>
+                <mat-option value="%">%</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-button class="mat-raised-button mat-primary" (click)="onCalculate(f)">
+            Calculate
+        </button>
+    </form>
+    <div class="result" *ngIf="result!==undefined">
+        {{number1.value}} {{operator.value}} {{number2.value}} = {{result}}
+    </div>
+</div>

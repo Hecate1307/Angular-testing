@@ -1,0 +1,34 @@
+<div class="book">
+    <div class="description-group">
+        <img class="coverUrl" [src]="book.coverUrl">
+        <div class="content">
+            <div class="row">
+                <span class="title">{{book.title}}</span>
+                <span class="author">
+                    by {{book.author}}
+                </span>
+            </div>
+
+            <div class="seqNo">
+                Sequence Number: {{book.seqNo}}
+            </div>
+
+            <div class="rating">
+                <bar-rating [rate]="book.rating" [max]="5" [readOnly]="true"></bar-rating>
+                <span class="rate">{{book.rating}} out of 5</span>
+            </div>
+
+            <div class="price-box">
+                <div class="version">Hardcover</div>
+                <div class="price">${{book.price}}</div>
+            </div>
+            <div class="description">{{book.description}}</div>
+            <button mat-button class="mat-raised-button mat-primary" [routerLink]="['/books']">
+                BACK TO BOOKS
+            </button>
+        </div>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+
+    <h3>Books List</h3>
+    <mat-tab-group>
+
+
+        <ng-container>
+
+            <mat-tab label="ficton">
+
+                <app-books-card-list [books]="Fictionbooks">
+
+                </app-books-card-list>
+
+            </mat-tab>
+
+        </ng-container>
+
+
+        <ng-container>
+
+            <mat-tab label="non-fiction">
+
+                <app-books-card-list [books]="NonFictionbooks">
+
+                </app-books-card-list>
+
+            </mat-tab>
+
+        </ng-container>
+
+    </mat-tab-group>
+
+</div>

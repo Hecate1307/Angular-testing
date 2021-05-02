@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>{{book.title}}</h2>
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field>
+        <input matInput placeholder="seqNo" formControlName="seqNo">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="author" formControlName="author">
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <bar-rating [(rate)]="form.value.rating" [max]="5" [readOnly]="true"></bar-rating>
+        <input matInput placeholder="rating" formControlName="rating">
+        <mat-error *ngIf="form.get('rating').hasError('invalid')">Rating can not be large than 5</mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="price" formControlName="price">
+        <span matPrefix>$&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Select category" formControlName="category">
+
+            <mat-option value="Fiction">
+                Fiction</mat-option>
+            <mat-option value="Non-fiction">
+                Non-fiction</mat-option>
+
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="coverUrl" formControlName="coverUrl">
+    </mat-form-field>
+
+    <img class="cover" src="{{book.coverUrl}}" alt="Book cover">
+
+
+
+    <mat-form-field>
+
+        <textarea matInput placeholder="Book Description" formControlName="description">
+
+        </textarea>
+
+    </mat-form-field>
+
+    <mat-dialog-actions color="primary">
+
+        <button class="mat-raised-button" (click)="close()">
+            Close
+        </button>
+
+        <button class="mat-raised-button mat-primary" (click)="save()">
+            Save
+        </button>
+
+    </mat-dialog-actions>

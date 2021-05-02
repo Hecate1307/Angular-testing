@@ -1,0 +1,76 @@
+.book{
+    max-width: 80vw;
+    margin: 15vh auto;
+    
+}
+
+.coverUrl{
+    width: 25vw;
+    height: 60vh;
+}
+
+.description-group{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+.content{
+    width: 50vw;
+}
+
+.row{
+    margin: 30px 0;
+}
+
+.title{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.author{
+    font-style: italic;
+}
+.rating{
+    width: 15vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    .rate{
+        font-style: italic;
+        color: gray;
+    }
+}
+
+.price-box{
+    width: 10vw;
+    height: 6vh;
+    margin: 5vh 0;
+    border: 2px lightgrey solid;
+    border-radius: 5px;
+    padding: 5px 10px 5px 11px;
+    .version{
+        font-weight: 700;
+    }
+    .price{
+        font-size: 1.5rem;
+        color: #C7511F;
+        padding-top: 3px;
+    }
+}
+
+.price-box:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #C7511F;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+}
+.price-box:active {
+    text-decoration: underline;
+    background-color: #e79876d7;
+    cursor: pointer;
+}
+
+.mat-button{
+    margin-top: 5vh;
+}
