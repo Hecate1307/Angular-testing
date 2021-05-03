@@ -20,8 +20,12 @@ export class BookComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
+          this.fetchBook();
         }
       );
+  }
+
+  fetchBook(): void{
     this.bookService.getBookByID(this.id).subscribe(
       book => this.book = {...book}
     );
