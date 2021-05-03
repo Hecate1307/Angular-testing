@@ -22,6 +22,8 @@ export class BookComponent implements OnInit {
           this.id = +params['id'];
         }
       );
-    this.book = this.bookService.getBookByID(this.id);
+    this.bookService.getBookByID(this.id).subscribe(
+      book => this.book = {...book}
+    );
   }
 }

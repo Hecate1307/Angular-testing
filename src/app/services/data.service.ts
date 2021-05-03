@@ -7,9 +7,7 @@ import { Book } from '../model/book';
 })
 export class DataService {
 
-  constructor(
-  ) {
-  }
+  constructor() {}
 
   private baseUrl = 'https://books-b58e9-default-rtdb.firebaseio.com/';
 

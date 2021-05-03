@@ -16,20 +16,31 @@ export class HomeComponent implements OnInit {
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
-    this.books = this.bookService.getBooks();
-    this.reloadBooks();
+    //First time fetching data
+    this.fetchBooks();
+
+    //Looking for books change
+    this.bookService.bookChanged.subscribe( book => {
+      this.fetchBooks();
+    })
   }
+
+  fetchBooks(){
+    this.bookService.getBooks().subscribe(books => {
+      this.books = [...books];
+      this.reloadBooks();
+    });
+  }
+
   reloadBooks() {
     this.Fictionbooks = this.filterByCategory(this.books, 'Fiction');
     this.NonFictionbooks = this.filterByCategory(this.books, 'Non-fiction');
     console.log(this.Fictionbooks);
   }
+
   filterByCategory(books: Book[], category: string) {
     return books.filter(book =>
       book.category === category
     );
-
   }
-
-
 }

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, AbstractControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Book } from 'src/app/model/book';
 import { BookService } from 'src/app/services/book.service';
@@ -26,7 +26,7 @@ export class BooksEditComponent implements OnInit {
       title: [book.title, Validators.required],
       seqNo: [book.seqNo, Validators.required],
       author: [book.author, Validators.required],
-      rating: [book.rating, [Validators.required, Validators.pattern("^[0-9]+(\.?[0-9]+)?$"), this.ratingValidator()]],
+      rating: [book.rating, [Validators.required, Validators.pattern("^[0-9]+(\.?[0-9]+)?$"), this.ratingValidator]],
       price: [book.price, [Validators.required, Validators.pattern("^[0-9]+(\.?[0-9]+)?$")]],
       category: [book.category, Validators.required],
       coverUrl: [book.coverUrl, Validators.required],
@@ -40,7 +40,10 @@ export class BooksEditComponent implements OnInit {
 
   save() {
     const val = this.form.value;
-    this.bookService.saveBook(this.book.id, val);
+    console.log(val);
+    this.bookService.saveBook(this.book.id, val).subscribe(
+        book => this.bookService.bookChanged.next({...book})
+      );
     this.dialogRef.close();
   }
 
@@ -48,14 +51,20 @@ export class BooksEditComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  ratingValidator() {
-    return (control: AbstractControl): { [key: string]: boolean } | null => {
-
-      if (control.value > 5) {
-        return { 'ratingValidator': true }
-      }
-      return null;
-    };
+  ratingValidator:ValidatorFn = (control: AbstractControl): {[key:string] : boolean} | null => {
+    if (control.value > 5) {
+      return { 'ratingValidator': true }
+    }
+    return null;
   }
+
+  // ratingValidator() {
+  //   return (control: AbstractControl): { [key: string]: boolean } | null => {
+  //     if (control.value > 5) {
+  //       return { 'ratingValidator': true }
+  //     }
+  //     return null;
+  //   };
+  // }
 
 }
