@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { Materials } from './materials.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BooksModule } from './books/books.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BooksModule } from './books/books.module';
     AppRoutingModule,
     Materials,
     BrowserAnimationsModule,
-    BooksModule
+    BooksModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

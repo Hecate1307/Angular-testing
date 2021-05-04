@@ -16,9 +16,9 @@ export class BooksCardListComponent implements OnInit {
     private bookService: BookService) { }
 
   ngOnInit(): void {
-    this.bookService.bookChanged.subscribe(() => {
-      this.books = this.bookService.getBooks()
-    });
+    // this.bookService.bookChanged.subscribe((books) => {
+    //   this.books = {...books}
+    // });
   }
   editBook(book: Book) {
     const dialogConfig = new MatDialogConfig();
