@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { BookService } from 'src/app/services/book.service';
+import { BooksModule } from '../books.module';
 
 import { BookComponent } from './book.component';
 
@@ -8,7 +12,11 @@ describe('BookComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookComponent ]
+      imports: [BooksModule, HttpClientTestingModule],
+      declarations: [ BookComponent ],
+      providers:[
+        ActivatedRoute, BookService
+      ]
     })
     .compileComponents();
   });
@@ -20,6 +28,6 @@ describe('BookComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    pending();
   });
 });

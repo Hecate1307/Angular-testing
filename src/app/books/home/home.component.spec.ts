@@ -1,5 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BookService } from 'src/app/services/book.service';
 import { BooksModule } from '../books.module';
@@ -61,11 +61,15 @@ describe('HomeComponent', () => {
     expect(tabs.length).toBe(2, "Incorrect number of categories are fetched");
   })
 
-  it('should switch from fiction to non-fiction books', () => {
+  it('should switch from fiction to non-fiction books',fakeAsync(() => {
     bookService.getBooks.and.returnValue(of(BOOKS));
     fixture.detectChanges();
-    let tabs = el.queryAll(By.css(".mat-tab-body"));
+    let tabs = el.queryAll(By.css(".mat-tab-label"));
     tabs[1].nativeElement.click();
-    pending();
-  })
+    fixture.detectChanges();
+    flush();
+    const bookTitles = el.queryAll(By.css('.mat-tab-body-active'));
+    expect(bookTitles.length).toBeGreaterThan(0, 'title number incorrect');
+    expect(bookTitles[0].nativeElement.textContent).toContain('Milk', 'not get the right title')
+  }))
 });
