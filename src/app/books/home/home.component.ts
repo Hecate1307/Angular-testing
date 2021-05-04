@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
   reloadBooks() {
     this.Fictionbooks = this.filterByCategory(this.books, 'Fiction');
     this.NonFictionbooks = this.filterByCategory(this.books, 'Non-fiction');
-    console.log(this.Fictionbooks);
   }
 
   filterByCategory(books: Book[], category: string) {
