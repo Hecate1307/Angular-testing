@@ -12,14 +12,10 @@ import { BookService } from 'src/app/services/book.service';
 export class BooksCardListComponent implements OnInit {
 
   @Input() books: Book[];
-  constructor(private dialog: MatDialog,
-    private bookService: BookService) { }
+  constructor(private dialog: MatDialog ) { }
 
-  ngOnInit(): void {
-    // this.bookService.bookChanged.subscribe((books) => {
-    //   this.books = {...books}
-    // });
-  }
+  ngOnInit(): void { }
+  
   editBook(book: Book) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

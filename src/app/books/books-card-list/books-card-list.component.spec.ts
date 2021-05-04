@@ -1,7 +1,9 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { componentFactoryName } from '@angular/compiler';
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterLinkDirectiveStub } from 'src/app/testingStubs/router-link-directive-stub';
 import { BOOKS } from 'src/assets/mockBooks';
 import { BooksModule } from '../books.module';
 
@@ -15,8 +17,7 @@ describe('BooksCardListComponent', () => {
 
   beforeEach( () =>{
     TestBed.configureTestingModule({
-      imports:[ BooksModule, HttpClientTestingModule ],
-      declarations:[ BooksCardListComponent ]
+      imports:[ BooksModule ],
     })
 
     fixture = TestBed.createComponent(BooksCardListComponent);
@@ -65,7 +66,24 @@ describe('BooksCardListComponent', () => {
   })
 
   it('should navigate well when click Detail', () => {
+
     pending();
+    // comp.books = [...BOOKS];
+    // fixture.detectChanges();
+
+
+    // let linkDes: DebugElement[] = el.queryAll(By.directive(RouterLinkDirectiveStub));
+    // console.log(linkDes.length)
+
+    //let routerLink: RouterLinkDirectiveStub = linkDe.injector.get(RouterLinkDirectiveStub);
+
+    // expect(routerLink.linkParams).toBe('/book/1', 'router link setup not correct');
+    // expect(routerLink.navigatedTo).toBeNull('not navigation when set up');
+
+    // linkDe.triggerEventHandler('click',null);
+    // fixture.detectChanges();
+
+    // expect(routerLink.navigatedTo).toBe('/book/1');
   })
 
   it('should open popup when click edit', () => {

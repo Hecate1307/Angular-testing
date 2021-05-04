@@ -17,13 +17,12 @@ describe('HomeComponent', () => {
   let bookService: any;
   
   const fictionBooks = BOOKS.filter(book => book.category === "Fiction");
-  const nonFictionBooks = BOOKS.filter(book => book.category === "Non-fiction");
+  //const nonFictionBooks = BOOKS.filter(book => book.category === "Non-fiction");
   beforeEach(() => {
 
     const bookServiceSpy =  jasmine.createSpyObj('BookService', ['getBooks'], {'bookChanged': new Subject()});
     TestBed.configureTestingModule({
       imports:[ HttpClientTestingModule, BooksModule, NoopAnimationsModule ],
-      declarations: [ HomeComponent ],
       providers: [
         {provide: BookService, useValue: bookServiceSpy}
       ],
