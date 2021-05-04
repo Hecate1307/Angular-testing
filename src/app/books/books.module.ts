@@ -9,6 +9,8 @@ import { BooksCardListComponent } from './books-card-list/books-card-list.compon
 import { BooksEditComponent } from './books-edit/books-edit.component';
 import { HomeComponent } from './home/home.component';
 import { BarRatingModule } from 'ngx-bar-rating';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -24,7 +26,7 @@ import { BarRatingModule } from 'ngx-bar-rating';
         BrowserModule,
         Materials,
         BarRatingModule,
-        FormsModule
+        FormsModule,
     ],
     exports: [
         HomeComponent,

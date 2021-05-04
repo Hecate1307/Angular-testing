@@ -15,16 +15,12 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   getBooks(): Observable<Book[]>{ 
-    return this.http.get<Book[]>(this.url).pipe(
-      tap( _ => console.log(_))
-    );
+    return this.http.get<Book[]>(this.url);
   }
   
   saveBook(id: number, newBook: Partial<Book>) {
     let bookUrl = `${this.url}/${id}`;
-    return this.http.put<Book>(bookUrl, newBook).pipe(
-      tap(_ => console.log(_))
-    );
+    return this.http.put<Book>(bookUrl, newBook);
   }
 
   getBookByID(id: number): Observable<Book> {

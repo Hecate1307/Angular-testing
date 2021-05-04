@@ -6,7 +6,7 @@
 
         <ng-container>
 
-            <mat-tab label="ficton">
+            <mat-tab *ngIf="Fictionbooks.length > 0" label="fiction">
 
                 <app-books-card-list [books]="Fictionbooks">
 
@@ -19,7 +19,7 @@
 
         <ng-container>
 
-            <mat-tab label="non-fiction">
+            <mat-tab *ngIf="NonFictionbooks.length > 0" label="non-fiction">
 
                 <app-books-card-list [books]="NonFictionbooks">
 
